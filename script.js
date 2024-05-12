@@ -91,7 +91,7 @@ function retificarRenegociacao() {
     const usageStopObj = new Date(usageStop.split('/').reverse().join('/'));
 
     // Cálculos
-    const diasUtilizados = Math.floor((usageStopObj - dataInicioObj) / (1000 * 60 * 60 * 24));
+    const diasUtilizados = Math.floor((usageStopObj - dataInicioObj) / (1000 * 60 * 60 * 24)+1);
     const excedente = subscriptionPlan / 30 * diasUtilizados;
     const totalDevido = excedente + valorFatura;
 
