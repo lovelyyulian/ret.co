@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ret.co</title>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="./images/icon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="carregarSite()">
+<div id="left-side">
+    <div style="display: flex; flex-direction: column; align-self: center; width: 250px;">
+        <h1>Ret.co</h1>
+        <label for="subscriptionPlan">Valor do plano:</label>
+        <input type="text" placeholder="Plano" name="subscriptionPlan" style="padding: 10px; border-radius: 5px; margin-bottom: 10px;" id="subscriptionPlan" required>
+        <label for="usageStop">Parou de utilizar em:</label>
+        <input type="text" placeholder="Data" name="usageStop" style="padding: 10px; border-radius: 5px; margin-bottom: 10px;" id="usageStop" required>
+    </div>
+    <div style="align-self: center; width: 250px;">
+        <label for="eventuals">Possui eventuais:</label>
+        <input type="radio" name="eventuals" value="Sim" name="yes" onclick="eventualAdd()" required>
+        <label for="yes">Sim</label>
+        <input type="radio" name="eventuals" value="Não" name="no" onclick="eventualAdd()" required>
+        <label for="no">Não</label>
+        <div id="eventualAdd" style="display: none; flex-direction: column;">
+            <label for="eventualValue">Valor do eventual:</label>
+            <input placeholder="Valor" name="eventualValue" style="padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+            <label for="originProtocol">Protocolo:</label>
+            <input placeholder="Protocolo"  name="originProtocol" style="padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+            <select style="padding: 5px; border-radius: 5px; border: none; outline: none;">
+                <option>Acréscimo</option>
+                <option>Desconto</option>
+            </select>
+            <span style="align-self: flex-end;">
+                <label for="eventualMore">Adicionar Eventual</label>
+                <button style="width: 30px; height: 30px;" name="eventualMore">+</button>
+            </span>
+        </div>
+    </div>
+    <button onclick="retificarRenegociacao()">Retificar Negociação</button>
+</div>
+<div id="right-side">
+    <label for="negotiation" style="font-size: x-large; font-weight: bold;">Negociação:</label>
+    <textarea placeholder="Negociação" name="negotiation" id="negotiation"></textarea>
+    <button onclick="cleanNegotiation()">Limpar</button>
+
+    <label for="negotiationRet" style="font-size: x-large; font-weight: bold;">Texto Retificado:</label>
+    <textarea placeholder="Sua negociação retificada aqui" name="negotiationRet" id="negotiationRet"></textarea>
+    <button onclick="copyRetNegotiation()">Copiar</button>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
