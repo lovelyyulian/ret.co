@@ -18,6 +18,9 @@ r. serra em 12 de mai '24`
 // Função para limpar o campo de negociação
 function cleanNegotiation() {
     document.getElementById("negotiation").value = "";
+    document.getElementById("subscriptionPlan").value = "";
+    document.getElementById("usageStop").value = "";
+    document.getElementById("negotiationRet").value = "";
 }
 
 // Função para copiar o texto retificado
