@@ -15,13 +15,23 @@ r. serra em 12 de mai '24`
     alert("AVISO: Operações com eventuais ainda em fase de desenvolvimento. Talvez não funcionem como desejado.")
 }
 
-// Função para limpar o campo de negociação
 function cleanNegotiation() {
+    // Obter todos os botões de rádio com o nome "eventuals"
+    const eventualsRadioButtons = document.querySelectorAll('input[name="eventuals"]');
+    var eventualAdd = document.getElementById("eventualAdd");
+    eventualAdd.style.display = "none";
+
     document.getElementById("negotiation").value = "";
     document.getElementById("subscriptionPlan").value = "";
     document.getElementById("usageStop").value = "";
     document.getElementById("negotiationRet").value = "";
+
+    // Iterar sobre os botões de rádio e desmarcá-los
+    eventualsRadioButtons.forEach(radioButton => {
+        radioButton.checked = false;
+    });
 }
+
 
 // Função para copiar o texto retificado
 function copyRetNegotiation() {
@@ -70,7 +80,16 @@ document.querySelector('input[name="subscriptionPlan"]').addEventListener('input
 });
 
 function retificarRenegociacao() {
-    // Pegar as informações fornecidas pelo usuário
+    const subscriptionPlanValue = document.getElementById("subscriptionPlan").value.trim();
+    const usageStopValue = document.getElementById("usageStop").value.trim();
+    const negotiationValue = document.getElementById("negotiation").value.trim();
+    const eventualsValue = document.querySelector('input[name="eventuals"]').value.trim();
+
+    if (subscriptionPlanValue === "" || usageStopValue === "" || negotiationValue === "" || eventualsValue === "") {
+        alert("Por favor, preencha todos os campos corretamente");
+        return false;
+    } else {
+        // Pegar as informações fornecidas pelo usuário
     const negotiation = document.getElementById("negotiation").value;
     const subscriptionPlan = parseFloat(document.getElementById("subscriptionPlan").value.replace(".", "").replace(",", "."));
     const usageStop = document.getElementById("usageStop").value;
@@ -116,4 +135,5 @@ Excedente:
 - Periodo ${dataInicioFormatada} a ${dataFimFormatada}, ${diasUtilizados} dia(s), valor R$ ${excedente.toFixed(2).replace(".", ",")}
 
 TOTAL DEVIDO: R$ ${totalDevido.toFixed(2).replace(".", ",")}`;
+    }
 }
