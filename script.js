@@ -37,7 +37,7 @@ function cleanNegotiation() {
 function copyRetNegotiation() {
     const textArea = document.getElementById("negotiationRet");
     
-    if (textArea === "") {
+    if (textArea.value === "") {
         alert("Nenhum texto foi copiado. O campo está vazio.");
     } else {
         textArea.select();
