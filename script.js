@@ -36,10 +36,14 @@ function cleanNegotiation() {
 // Função para copiar o texto retificado
 function copyRetNegotiation() {
     const textArea = document.getElementById("negotiationRet");
-    textArea.select();
-    document.execCommand("copy");
-
-    alert("Texto copiado com sucesso.")
+    
+    if (textArea.select() === "") {
+        alert("Nenhum texto foi copiado. O campo está vazio.");
+    } else {
+        textArea.select();
+        document.execCommand("copy");
+        alert("Texto copiado com sucesso.");
+    }
 }
 
 
